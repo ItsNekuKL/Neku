@@ -1,2 +1,3 @@
 # Neku
-IDK just add without context
+This just private project while im at university
+just fill my empty time
