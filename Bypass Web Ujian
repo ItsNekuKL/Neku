@@ -1,0 +1,33 @@
+// 1. Nipu browser biar ngira lu mantengin tab terus
+Object.defineProperty(document, 'visibilityState', {value: 'visible', writable: true});
+Object.defineProperty(document, 'hidden', {value: false, writable: true});
+
+// 2. Matiin event tracking jQuery bawaan webnya
+if (typeof $ !== 'undefined') {
+    $(window).off("blur focus");
+    $(document).off("visibilitychange");
+}
+
+// 3. Bantai semua timer/interval nyebelin yang jalan diem-diem
+for (let i = 1; i < 99999; i++) window.clearInterval(i);
+
+// 4. Cuci gudang dosa lu di sistem biar balik suci
+localStorage.setItem("cheat", 0);
+
+// BYPASS COPY PASTE
+// 1. Maksa browser nge-bypass semua larangan copas/klik kanan
+const jebolCopas = (e) => e.stopImmediatePropagation();
+['copy', 'paste', 'cut', 'contextmenu', 'selectstart'].forEach(event => {
+    document.addEventListener(event, jebolCopas, true);
+});
+
+// 2. Suntik CSS paksa biar lu bisa nge-blok (select) teks soalnya
+const style = document.createElement('style');
+style.innerHTML = '* { -webkit-user-select: text !important; user-select: text !important; }';
+document.head.appendChild(style);
+
+// 3. Matiin event blocker bawaan jQuery (jaga-jaga)
+if (typeof $ !== 'undefined') {
+    $(document).off("copy paste cut contextmenu selectstart");
+    $('*').off("copy paste cut contextmenu selectstart");
+}
